@@ -3,6 +3,15 @@ import React, { Component } from 'react';
 class NavBar extends Component {
     render() {
         return (
+            <>
+            <div className="container" id="home">
+            <div className="col-12 text-center">
+                <div className="tm-page-header">
+                <i ><img src="logo.jpg" alt="logo" /></i>
+                <h1 className="d-inline-block text-uppercase">Municipal Corporation Complain Management System</h1>
+                </div>
+            </div>
+            </div>
             <div className="tm-nav-section">
                 <div className="container">
                     <div className="row">
@@ -46,6 +55,7 @@ class NavBar extends Component {
                     </div>
                 </div>
                 </div>
+            </>
         );
     }
 }

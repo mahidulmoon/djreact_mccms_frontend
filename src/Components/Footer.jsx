@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import { DiGithubBadge } from "react-icons/di";
+import { AiFillFacebook,AiFillLinkedin } from "react-icons/ai";
+import { BiBuilding } from "react-icons/bi";
 class Footer extends Component {
     render() {
         return (
@@ -20,17 +22,17 @@ class Footer extends Component {
             <div class="footer-center">
      
             <div>
-            <i class="fa fa-map-marker"></i>
+            <BiBuilding/>
             <p><span>YounusKhan Scholars Garden(DIU Boys Hostel,Ashulia)</span> Dhaka, Bangladesh</p>
             </div>
      
             <div>
-            <i class="fa fa-phone"></i>
+            <BiBuilding/>
             <p>+8801771042196</p>
             </div>
      
             <div>
-            <i class="fa fa-envelope"></i>
+            <BiBuilding/>
             <p><a href="mailto:mahidulmoon@gmail.com">mahidul35-219@diu.edu.bd</a></p>
             </div>
      
@@ -45,10 +47,10 @@ class Footer extends Component {
      
             <div class="footer-icons">
      
-            <a href="https://www.facebook.com/mdmahidul.moon/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.facebook.com/mdmahidul.moon/"><AiFillFacebook/></a>
             
-            <a href="https://www.linkedin.com/in/mahidul-moon-281509144/"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/mahidulmoon"><i class="fa fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mahidul-moon-281509144/"><AiFillLinkedin/></a>
+            <a href="https://github.com/mahidulmoon"><DiGithubBadge/></a>
             
             </div>
      
