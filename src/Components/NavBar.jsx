@@ -43,7 +43,7 @@ class NavBar extends Component {
                                 <a className="nav-link" href="#activities">Activities</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#company">Company</a>
+                                <a className="nav-link" href="/registration">Sign Up</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/login">Sign In</a>
