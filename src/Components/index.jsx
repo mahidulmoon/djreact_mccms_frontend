@@ -6,6 +6,7 @@ import Body from "./Body";
 import Home from "./Home/home";
 import Login from "./Authentication/login";
 import Registration from "./Authentication/Registration";
+import Feed from "./Feed/Feed";
 class MainBody extends Component {
     render() {
         return (
@@ -17,6 +18,7 @@ class MainBody extends Component {
                             <Route path="/" exact component={Home} />
                             <Route path="/login" exact component={Login} />
                             <Route path="/registration" exact component={Registration} />
+                            <Route path="/feeds" exact component={Feed} />
                         </Switch>
                     </Router>
                 </Body>
