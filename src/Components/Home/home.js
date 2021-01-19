@@ -8,8 +8,8 @@ class Home extends Component {
                 <div className="row tm-features-row">
                     <section className="col-md-6 col-sm-12 tm-feature-block">
                     <header className="tm-feature-header">
-                        <FaFan />
-                        <h3 className="tm-feature-h">Cras pretium diam ut metus</h3>
+                        
+                        <h3 className="tm-feature-h"><FaFan /> Cras pretium diam ut metus</h3>
                     </header>
                     <p>
                         Pro Line HTML5 Template is brought to you by
@@ -26,8 +26,8 @@ class Home extends Component {
                     </section>
                     <section className="col-md-6 col-sm-12 tm-feature-block">
                     <header className="tm-feature-header">
-                        <FaFan />
-                        <h3 className="tm-feature-h">Cras pretium diam ut metus</h3>
+                        
+                        <h3 className="tm-feature-h"><FaFan /> Cras pretium diam ut metus</h3>
                     </header>
                     <p>
                         Phasellus tristique, sapien quis mattis pellentesque, felis turpis
