@@ -7,6 +7,7 @@ import Home from "./Home/home";
 import Login from "./Authentication/login";
 import Registration from "./Authentication/Registration";
 import Feed from "./Feed/Feed";
+import Dashboard from "./Admin/Dashboard";
 class MainBody extends Component {
     render() {
         return (
@@ -19,6 +20,7 @@ class MainBody extends Component {
                             <Route path="/login" exact component={Login} />
                             <Route path="/registration" exact component={Registration} />
                             <Route path="/feeds" exact component={Feed} />
+                            <Route path="/admindashboard" exact component={Dashboard} />
                         </Switch>
                     </Router>
                 </Body>
