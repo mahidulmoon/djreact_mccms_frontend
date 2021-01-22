@@ -8,6 +8,7 @@ import Login from "./Authentication/login";
 import Registration from "./Authentication/Registration";
 import Feed from "./Feed/Feed";
 import Dashboard from "./Admin/Dashboard";
+import UserDashboard from "./User/Dashboard";
 class MainBody extends Component {
     render() {
         return (
@@ -21,6 +22,7 @@ class MainBody extends Component {
                             <Route path="/registration" exact component={Registration} />
                             <Route path="/feeds" exact component={Feed} />
                             <Route path="/admindashboard" exact component={Dashboard} />
+                            <Route path="/userdashboard" exact component={UserDashboard}/>
                         </Switch>
                     </Router>
                 </Body>
