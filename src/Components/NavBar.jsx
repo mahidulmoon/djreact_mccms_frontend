@@ -46,7 +46,7 @@ class NavBar extends Component {
                                 <a className="nav-link" href="/feeds">Complains Feed</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#activities">Activities</a>
+                                <a className="nav-link" href="/complainform">Complain Form</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/registration">Sign Up</a>

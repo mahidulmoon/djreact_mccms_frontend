@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class ProfileBasic extends Component {
     render() {
         return (
-            <div className="col-lg-4">
-                <div className="container mt-5 d-flex justify-content-center">
+            <div >
+                <div className="container mt-5 justify-content-center">
                     <div className="card p-3">
                         <div className="d-flex align-items-center">
                             <div className="image"> <img src="logo512.png" alt="logo" className="rounded" width="155" /> </div>
