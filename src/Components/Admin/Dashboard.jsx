@@ -4,6 +4,7 @@ import SideNotification from "./SideNotification";
 import UserTable from "./UserTable";
 import PreviligedUser from "./PreviligedUser";
 import Complains from "./Complains";
+import NoticeForm from "./NoticeForm";
 class Dashboard extends Component {
     render() {
         return (
@@ -18,6 +19,7 @@ class Dashboard extends Component {
                     <PreviligedUser />
                 </div>
                 <Complains />
+                <NoticeForm />
             </div>
         );
     }
