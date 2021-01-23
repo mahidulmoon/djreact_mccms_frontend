@@ -9,6 +9,7 @@ import Registration from "./Authentication/Registration";
 import Feed from "./Feed/Feed";
 import Dashboard from "./Admin/Dashboard";
 import UserDashboard from "./User/Dashboard";
+import ComplainForm from "./ComplainForm/Form";
 class MainBody extends Component {
     render() {
         return (
@@ -23,6 +24,7 @@ class MainBody extends Component {
                             <Route path="/feeds" exact component={Feed} />
                             <Route path="/admindashboard" exact component={Dashboard} />
                             <Route path="/userdashboard" exact component={UserDashboard}/>
+                            <Route path="/complainform" exact component={ComplainForm}/>
                         </Switch>
                     </Router>
                 </Body>
