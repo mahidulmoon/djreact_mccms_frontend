@@ -7,6 +7,7 @@ class NoticeForm extends Component {
                 <div className="container">] <div className=" text-center mt-5 ">
                     <h1>Notice as Announcement</h1>
                 </div>
+                <br />
                 <div className="row ">
                     <div className="col-lg-7 mx-auto">
                         <div className="card mt-2 mx-auto p-4 bg-light">
