@@ -80,13 +80,17 @@ class Registration extends Component {
                             </Form.Row>
 
                             <Form.Row>
-                                <Form.Check aria-label="is_staff" onClick={this.checkboxinput} value={this.state.register.is_staff} />
-                                <Form.Label>Staff User</Form.Label>
+                                <Col><Form.Check aria-label="is_staff" onClick={this.checkboxinput} value={this.state.register.is_staff} />
+                                <Form.Label>Authority</Form.Label></Col>
+                                <Col><Form.Check aria-label="is_supseruser"  />
+                                <Form.Label>Admin</Form.Label></Col>
                             </Form.Row>
 
-                            <Button variant="primary" type="submit" onClick={this.onsubmit}>
-                                Submit
-                            </Button>
+                            <Form.Row>
+                                <Button variant="primary" type="submit" onClick={this.onsubmit}>
+                                    Submit
+                                </Button>
+                            </Form.Row>
                         </Form.Group>
                     </Form.Row>
                 </Form>
