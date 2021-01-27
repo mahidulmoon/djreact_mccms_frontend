@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {FaUserSecret} from "react-icons/fa";
+import {FcApproval,FcBookmark} from "react-icons/fc";
 import axios from 'axios';
 class PreviligedUser extends Component {
     state = {
@@ -9,7 +10,7 @@ class PreviligedUser extends Component {
         searchvalue:'',
     }
     componentDidMount(){
-        axios.get('http://127.0.0.1:8000/api/user/registeruser/').then(res => this.setState({userlist:res.data.results,next:res.data.next}))
+        axios.get('http://127.0.0.1:8000/api/user/previligeduser/').then(res => this.setState({userlist:res.data.results,next:res.data.next}))
     }
     nextpage = () =>{
         axios.get(this.state.next).then(res => this.setState({userlist:res.data.results,next:res.data.next,previous:res.data.previous}))
@@ -18,7 +19,7 @@ class PreviligedUser extends Component {
         axios.get(this.state.previous).then(res => this.setState({userlist:res.data.results,next:res.data.next,previous:res.data.previous}))
     } 
     searchResult = () =>{
-        axios.get('http://127.0.0.1:8000/api/user/registeruser/?search='+this.state.searchvalue).then(res => this.setState({userlist:res.data.results}))
+        axios.get('http://127.0.0.1:8000/api/user/previligeduser/?search='+this.state.searchvalue).then(res => this.setState({userlist:res.data.results}))
     }
     render() {
         return (
@@ -41,31 +42,22 @@ class PreviligedUser extends Component {
                             <th>Name</th>
                             <th>Usename</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
+                            <th>Staff</th>
+                            <th>Admin</th>
                             <th>Actions</th>
                             </tr>
                         </thead>
-                        {/* <tfoot>
-                            <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                            </tr>
-                        </tfoot> */}
+                        
                         <tbody>
                             {this.state.userlist.map(user =>
-                               {if (user.user.is_staff===true || user.user.is_superuser===true){
+                               {if (user.is_staff===true || user.is_superuser===true){
                                    return (
                                     <tr>
-                                        <td>{user.user.first_name} {user.user.last_name}</td>
-                                        <td>{user.user.username}</td>
-                                        <td>{user.user.email}</td>
-                                        <td>{user.phone}</td>
-                                        <td>{user.address}</td>
+                                        <td>{user.first_name} {user.last_name}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.is_staff && <FcApproval/>}</td>
+                                        <td>{user.is_superuser && <FcApproval/>} {!user.is_superuser && <FcBookmark/>}</td>
                                         <td>$320,800</td>
                                    </tr> 
                                    )
