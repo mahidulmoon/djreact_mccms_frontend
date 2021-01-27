@@ -49,7 +49,7 @@ class UserTable extends Component {
         
                         <tbody>
                             {this.state.userlist.map(user =>
-                               {if (user.user.is_staff===false && user.user.is_superuser===false){
+                               {while (user.user.is_staff===false && user.user.is_superuser===false){
                                    return (
                                     <tr>
                                         <td>{user.user.first_name} {user.user.last_name}</td>
@@ -60,7 +60,7 @@ class UserTable extends Component {
                                         <td>$320,800</td>
                                    </tr> 
                                    )
-                               }}
+                                }}
                                 
                             )}
                             
@@ -69,11 +69,11 @@ class UserTable extends Component {
                         <nav aria-label="Page navigation example">
                             <ul className="pagination justify-content-end">
                                 <li className="page-item ">
-                                <a className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</a>
+                                <button className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</button>
                                 </li>
                                 
                                 <li className="page-item">
-                                <a className="page-link" onClick={this.nextpage}>Next</a>
+                                <button className="page-link" onClick={this.nextpage}>Next</button>
                                 </li>
                             </ul>
                         </nav>

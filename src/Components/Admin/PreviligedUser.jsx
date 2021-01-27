@@ -50,7 +50,7 @@ class PreviligedUser extends Component {
                         
                         <tbody>
                             {this.state.userlist.map(user =>
-                               {if (user.is_staff===true || user.is_superuser===true){
+                               {while (user.is_staff===true || user.is_superuser===true){
                                    return (
                                     <tr>
                                         <td>{user.first_name} {user.last_name}</td>
@@ -70,11 +70,11 @@ class PreviligedUser extends Component {
                         <nav aria-label="Page navigation example">
                             <ul className="pagination justify-content-end">
                                 <li className="page-item ">
-                                <a className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</a>
+                                <button className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</button>
                                 </li>
                                 
                                 <li className="page-item">
-                                <a className="page-link" onClick={this.nextpage}>Next</a>
+                                <button className="page-link" onClick={this.nextpage}>Next</button>
                                 </li>
                             </ul>
                         </nav>
