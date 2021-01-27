@@ -6,6 +6,7 @@ class PreviligedUser extends Component {
         userlist : [],
         next:'',
         previous:'',
+        searchvalue:'',
     }
     componentDidMount(){
         axios.get('http://127.0.0.1:8000/api/user/registeruser/').then(res => this.setState({userlist:res.data.results,next:res.data.next}))
@@ -16,12 +17,22 @@ class PreviligedUser extends Component {
     previouspage = () =>{
         axios.get(this.state.previous).then(res => this.setState({userlist:res.data.results,next:res.data.next,previous:res.data.previous}))
     } 
+    searchResult = () =>{
+        axios.get('http://127.0.0.1:8000/api/user/registeruser/?search='+this.state.searchvalue).then(res => this.setState({userlist:res.data.results}))
+    }
     render() {
         return (
             <div className="col-lg-6">
                 <div className="card mb-3">
                     <div className="card-header">
                     <FaUserSecret /> Previliged User Table</div>
+                    <div className="col-md-4">
+                            <label for="validationDefaultUsername" className="form-label"></label>
+                            <div className="input-group">
+                            <span className="input-group-text" id="inputGroupPrepend2" onClick={this.searchResult}>search</span>
+                            <input type="text" className="form-control" id="validationDefaultUsername" onChange={e => this.setState({searchvalue:e.target.value})}  aria-describedby="inputGroupPrepend2" required />
+                            </div>
+                        </div>
                     <div className="card-body">
                     <div className="table-responsive">
                     <table className="table table-bordered" id="dataTable" width="100%" cellspacing="0">
