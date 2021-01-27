@@ -5,7 +5,10 @@ import UserTable from "./UserTable";
 import PreviligedUser from "./PreviligedUser";
 import Complains from "./Complains";
 import NoticeForm from "./NoticeForm";
+
 class Dashboard extends Component {
+    
+    
     render() {
         return (
             <div className="customcontainer">

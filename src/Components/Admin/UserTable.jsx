@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import {FaUserPlus} from "react-icons/fa";
+import axios from 'axios';
 class UserTable extends Component {
+    state = {
+        userlist : [],
+        next:'',
+        previous:'',
+    }
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/api/user/registeruser/').then(res => this.setState({userlist:res.data.results,next:res.data.next}))
+    }
+    nextpage = () =>{
+        axios.get(this.state.next).then(res => this.setState({userlist:res.data.results,next:res.data.next,previous:res.data.previous}))
+    } 
+    previouspage = () =>{
+        axios.get(this.state.previous).then(res => this.setState({userlist:res.data.results,next:res.data.next,previous:res.data.previous}))
+    } 
     render() {
         return (
             <div className="col-lg-6">
@@ -13,11 +28,11 @@ class UserTable extends Component {
                         <thead>
                             <tr>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Usename</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Actions</th>
                             </tr>
                         </thead>
                         {/* <tfoot>
@@ -31,34 +46,32 @@ class UserTable extends Component {
                             </tr>
                         </tfoot> */}
                         <tbody>
-                            <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            </tr>
-                            <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
-                            </tr>
+                            {this.state.userlist.map(user =>
+                               {if (user.user.is_staff===false && user.user.is_superuser===false){
+                                   return (
+                                    <tr>
+                                        <td>{user.user.first_name} {user.user.last_name}</td>
+                                        <td>{user.user.username}</td>
+                                        <td>{user.user.email}</td>
+                                        <td>{user.phone}</td>
+                                        <td>{user.address}</td>
+                                        <td>$320,800</td>
+                                   </tr> 
+                                   )
+                               }}
+                                
+                            )}
+                            
                         </tbody>
                         </table>
                         <nav aria-label="Page navigation example">
                             <ul className="pagination justify-content-end">
-                                <li className="page-item disabled">
-                                <a className="page-link" href="/feeds" tabindex="-1" aria-disabled="true">Previous</a>
+                                <li className="page-item ">
+                                <a className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</a>
                                 </li>
-                                <li className="page-item"><a className="page-link" href="/feeds">1</a></li>
-                                <li className="page-item"><a className="page-link" href="/feeds">2</a></li>
-                                <li className="page-item"><a className="page-link" href="/feeds">3</a></li>
+                                
                                 <li className="page-item">
-                                <a className="page-link" href="/feeds">Next</a>
+                                <a className="page-link" onClick={this.nextpage}>Next</a>
                                 </li>
                             </ul>
                         </nav>
