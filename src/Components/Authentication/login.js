@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form,Container,Button,Col } from 'react-bootstrap';
+import axios from 'axios';
 class Login extends Component {
     state = {
         login:{
@@ -16,7 +17,8 @@ class Login extends Component {
         if(this.state.login.username ==='' || this.state.login.password ===''){
             alert("Input valid username and password");
         }else{
-            console.log(this.state.login);
+            //console.log(this.state.login);
+            axios.post('http://127.0.0.1:8000/api/user/login',this.state.login).then(res => {console.log(res.data);alert("Login Successfull")}).catch(err => alert("Error",err))
         }
     }
     render() {

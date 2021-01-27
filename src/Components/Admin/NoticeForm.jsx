@@ -4,7 +4,7 @@ class NoticeForm extends Component {
     render() {
         return (
             <div>
-                <div className="container">] <div className=" text-center mt-5 ">
+                <div className="container"> <div className=" text-center mt-5 ">
                     <h1>Notice as Announcement</h1>
                 </div>
                 <br />
