@@ -31,7 +31,7 @@ class PreviligedUser extends Component {
                             <label for="validationDefaultUsername" className="form-label"></label>
                             <div className="input-group">
                             <span className="input-group-text" id="inputGroupPrepend2" onClick={this.searchResult}>search</span>
-                            <input type="text" className="form-control" id="validationDefaultUsername" onChange={e => this.setState({searchvalue:e.target.value})}  aria-describedby="inputGroupPrepend2" required />
+                            <input type="text" className="form-control" placeholder="email or username" id="validationDefaultUsername" onChange={e => this.setState({searchvalue:e.target.value})}  aria-describedby="inputGroupPrepend2" required />
                             </div>
                         </div>
                     <div className="card-body">
