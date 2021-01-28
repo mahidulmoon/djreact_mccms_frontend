@@ -23,8 +23,18 @@ class NoticeForm extends Component {
                                                 <div className="col-md-6">
                                                     <div className="form-group"> <label for="form_need">Please specify your need *</label> <select id="form_need" name="need" className="form-control" required="required" data-error="Please specify your need.">
                                                             <option value="" selected disabled>--Select Your Issue--</option>
-                                                            <option>Demo 1</option>
-                                                            <option>Demo 2</option>
+                                                            <option>Building Development</option>
+                                                            <option>Central store Department</option>
+                                                            <option>Drainage Department</option>
+                                                            <option>Electrical Department</option>
+                                                            <option>Environment Department</option>
+                                                            <option>Central store Department</option>
+                                                            <option>Encroachment Department</option>
+                                                            <option>Health Department</option>
+                                                            <option>Municpal Secretary</option>
+                                                            <option>Road Department</option>
+                                                            <option>Solid waste Department</option>
+                                                            <option>Water supply and pumping Department</option>
                                                             
                                                         </select> </div>
                                                 </div>
