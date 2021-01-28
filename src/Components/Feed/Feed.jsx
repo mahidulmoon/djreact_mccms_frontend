@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import SingleFeed from "./SingleFeed";
 import {Container} from "react-bootstrap";
+import axios from "axios";
 class Feed extends Component {
+    state = {
+        complains:[],
+        next:'',
+        previous:'',
+        count: 0,
+    }
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/api/complain/complains/').then(res => {this.setState({complains: res.data.results,next:res.data.next,previous:res.data.previous,count:res.data.count})}).catch(err => {console.log(err);alert("error to fetch complain")});
+
+    }
     render() {
         return (
             <div>
@@ -9,8 +20,9 @@ class Feed extends Component {
                 <br />
                 <br />
                 <Container>
-                    <SingleFeed />
-                    <SingleFeed />
+                    {this.state.complains.map(complain =>
+                        <SingleFeed complain={complain}/>    
+                    )}
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-end">
                             <li className="page-item disabled">

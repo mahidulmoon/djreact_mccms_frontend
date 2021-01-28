@@ -8,14 +8,26 @@ class SingleFeed extends Component {
                     <div className="span8">
                         <div className="widget-box">
                         <div className="widget-title"> <span className="icon"> <i className="icon-list"></i> </span>
-                            <h4><FcList /> Two third width</h4>
+                            <h3 className="bg-light"><FcList /> <i>{this.props.complain.complain_subject}</i> </h3>
+                            <br/>
+                            <h6><button>Complained By:</button> {this.props.complain.complainer_name}</h6>
+                            <div className="row">
+                                <h6 className="col-lg-6"><button>Place:</button> {this.props.complain.complaint_address}</h6>
+                                <h6 className="col-lg-6"><button>Date:</button> {this.props.complain.created_at}</h6>
+                            </div>
                         </div>
-                        <div className="widget-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+                        <div className="widget-content text-info"> ** {this.props.complain.complain} </div>
                         <br />
-                        <code><FcAddDatabase/> Mark as Agree</code>
+                        <div>
+                            <img className="img-fluid" src={this.props.complain.image_field} alt="image" />
+                        </div>
+                        <br/>
+                        <button ><code><FcAddDatabase/>({this.props.complain.avg_rating}) Mark as Agree</code></button>
                         </div>
                     </div>
                 </div>
+                <br/>
+                <br/>
                 <br/>
             </div>
         );
