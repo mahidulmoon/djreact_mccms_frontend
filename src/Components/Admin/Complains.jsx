@@ -40,6 +40,11 @@ class Complains extends Component {
                                     <br/>
                                     <p className="text-danger bg-light"> {complain.status}</p>
                                     <p>{complain.created_at.slice(11,19)} <br/>{complain.created_at.slice(0,10)}</p>
+                                    <div className="row">
+                                        <button className="col-lg-6 btn-outline-primary">approve</button>
+                                        <button className="col-lg-6 btn-outline-success">solved</button>
+                                    </div>
+                                
                                 </div>
                                 <div className="tm-activity-block-text">
                                 <h3 className="tm-text-blue">{complain.complain_subject}</h3>
@@ -51,6 +56,7 @@ class Complains extends Component {
                                     
                                 
                                 </div>
+                                
                             </div>   
                         </div>
                         )}
