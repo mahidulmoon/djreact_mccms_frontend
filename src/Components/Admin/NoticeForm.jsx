@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class NoticeForm extends Component {
     state ={
         notice:{
@@ -14,7 +14,9 @@ class NoticeForm extends Component {
     }
     submitButton = e =>{
         e.preventDefault();
-        console.log(this.state.notice)
+        //console.log(this.state.notice)
+        axios.post('http://127.0.0.1:8000/api/notice/notices/',this.state.notice).then(res => {alert("Notice added successfully.");window.location.reload()}).catch(err => {console.log(err);alert("An error occured while posting notice.")});
+
     }
 
 
