@@ -56,6 +56,56 @@ class Dashboard extends Component {
                     </div>
                     </div>
                 </div>
+                <br/>
+                <br/>
+                <div className="row">
+                    <div className="col-xl-3 col-sm-6 mb-3">
+                    <div className="card text-white bg-info o-hidden h-100">
+                        <div className="card-body">
+                        <div className="card-body-icon">
+                            <AiOutlineMessage />
+                        </div>
+                        <div className="mr-5">26 New Messages!</div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    </div>
+                    <div className="col-xl-3 col-sm-6 mb-3">
+                    <div className="card text-white bg-secondary o-hidden h-100">
+                        <div className="card-body">
+                        <div className="card-body-icon">
+                            <AiOutlineSortAscending />
+                        </div>
+                        <div className="mr-5">11 New Tasks!</div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                    <div className="col-xl-3 col-sm-6 mb-3">
+                    <div className="card text-black bg-light o-hidden h-100">
+                        <div className="card-body">
+                        <div className="card-body-icon">
+                            <i className="fa fa-fw fa-shopping-cart"></i>
+                        </div>
+                        <div className="mr-5">123 New Orders!</div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                    <div className="col-xl-3 col-sm-6 mb-3">
+                    <div className="card text-white bg-dark o-hidden h-100">
+                        <div className="card-body">
+                        <div className="card-body-icon">
+                            <FaTicketAlt />
+                        </div>
+                        <div className="mr-5">13 New Tickets!</div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                </div>
             </div>
         );
     }
