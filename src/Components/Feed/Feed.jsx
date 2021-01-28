@@ -13,6 +13,12 @@ class Feed extends Component {
         axios.get('http://127.0.0.1:8000/api/complain/complains/').then(res => {this.setState({complains: res.data.results,next:res.data.next,previous:res.data.previous,count:res.data.count})}).catch(err => {console.log(err);alert("error to fetch complain")});
 
     }
+    nextpage = () =>{
+        axios.get(this.state.next).then(res => this.setState({complains:res.data.results,next:res.data.next,previous:res.data.previous}))
+    } 
+    previouspage = () =>{
+        axios.get(this.state.previous).then(res => this.setState({complains:res.data.results,next:res.data.next,previous:res.data.previous}))
+    } 
     render() {
         return (
             <div>
@@ -24,18 +30,16 @@ class Feed extends Component {
                         <SingleFeed complain={complain}/>    
                     )}
                     <nav aria-label="Page navigation example">
-                        <ul className="pagination justify-content-end">
-                            <li className="page-item disabled">
-                            <a className="page-link" href="/feeds" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li className="page-item"><a className="page-link" href="/feeds">1</a></li>
-                            <li className="page-item"><a className="page-link" href="/feeds">2</a></li>
-                            <li className="page-item"><a className="page-link" href="/feeds">3</a></li>
-                            <li className="page-item">
-                            <a className="page-link" href="/feeds">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                            <ul className="pagination justify-content-end">
+                                <li className="page-item ">
+                                <button className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</button>
+                                </li>
+                                
+                                <li className="page-item">
+                                <button className="page-link" onClick={this.nextpage}>Next</button>
+                                </li>
+                            </ul>
+                        </nav>
                 </Container>
             </div>
         );

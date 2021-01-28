@@ -10,12 +10,16 @@ class SingleFeed extends Component {
                         <div className="widget-title"> <span className="icon"> <i className="icon-list"></i> </span>
                             <h3 className="bg-light"><FcList /> <i>{this.props.complain.complain_subject}</i> </h3>
                             <br/>
-                            <h6><button>Complained By:</button> {this.props.complain.complainer_name}</h6>
                             <div className="row">
-                                <h6 className="col-lg-6"><button>Place:</button> {this.props.complain.complaint_address}</h6>
-                                <h6 className="col-lg-6"><button>Date:</button> {this.props.complain.created_at}</h6>
+                                <h6 className="col-lg-8"><button>Complained By:</button> {this.props.complain.complainer_name}</h6>
+                                <h6 className="col-lg-4 text-danger"><button>Status: </button> {this.props.complain.status}</h6>
+                            </div>
+                            <div className="row">
+                                <h6 className="col-lg-8"><button>Place:</button> {this.props.complain.complaint_address}</h6>
+                                <h6 className="col-lg-4"><button>Date:</button> {this.props.complain.created_at}</h6>
                             </div>
                         </div>
+                        <br/>
                         <div className="widget-content text-info"> ** {this.props.complain.complain} </div>
                         <br />
                         <div>
