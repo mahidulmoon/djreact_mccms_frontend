@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 
 class NoticeForm extends Component {
+    state ={
+        notice:{
+            subject:'',department:'',notice:''
+        }
+    }
+
+    formInputChange = (e) =>{
+        const cred = this.state.notice;
+        cred[ e.target.name ] = e.target.value;
+        this.setState({notice:cred});
+    }
+    submitButton = e =>{
+        e.preventDefault();
+        console.log(this.state.notice)
+    }
+
+
     render() {
         return (
             <div>
@@ -18,32 +35,32 @@ class NoticeForm extends Component {
                                             
                                             <div className="row">
                                                 <div className="col-md-6">
-                                                    <div className="form-group"> <label for="form_email">Subject *</label> <input id="form_email" type="email" name="email" className="form-control" placeholder="Please enter notice subject here *" required="required" data-error="Valid email is required."/> </div>
+                                                    <div className="form-group"> <label for="form_email">Subject *</label> <input id="form_email" type="email" name="subject" className="form-control" placeholder="Please enter notice subject here *" required="required" onChange={this.formInputChange} data-error="Valid email is required."/> </div>
                                                 </div>
                                                 <div className="col-md-6">
-                                                    <div className="form-group"> <label for="form_need">Please specify your need *</label> <select id="form_need" name="need" className="form-control" required="required" data-error="Please specify your need.">
-                                                            <option value="" selected disabled>--Select Your Issue--</option>
-                                                            <option>Building Development</option>
-                                                            <option>Central store Department</option>
-                                                            <option>Drainage Department</option>
-                                                            <option>Electrical Department</option>
-                                                            <option>Environment Department</option>
-                                                            <option>Central store Department</option>
-                                                            <option>Encroachment Department</option>
-                                                            <option>Health Department</option>
-                                                            <option>Municpal Secretary</option>
-                                                            <option>Road Department</option>
-                                                            <option>Solid waste Department</option>
-                                                            <option>Water supply and pumping Department</option>
+                                                    <div className="form-group"> <label for="form_need">On the behalf of*</label> <select id="form_need" name="department" onChange={this.formInputChange} className="form-control" required="required" data-error="Please specify your need.">
+                                                            <option value="" selected disabled>--Select Your Department--</option>
+                                                            <option value="Building Development">Building Development</option>
+                                                            <option value="Central store Department">Central store Department</option>
+                                                            <option value="Drainage Department">Drainage Department</option>
+                                                            <option value="Electrical Department">Electrical Department</option>
+                                                            <option value="Environment Departmen">Environment Department</option>
+                                                            <option value="Central store Department">Central store Department</option>
+                                                            <option value="Encroachment Department">Encroachment Department</option>
+                                                            <option value="Health Department">Health Department</option>
+                                                            <option value="Municpal Secretary">Municpal Secretary</option>
+                                                            <option value="Road Departmen">Road Department</option>
+                                                            <option value="Solid waste Department">Solid waste Department</option>
+                                                            <option value="Water supply and pumping Department">Water supply and pumping Department</option>
                                                             
                                                         </select> </div>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-md-12">
-                                                    <div className="form-group"> <label for="form_message">Notice *</label> <textarea id="form_message" name="message" className="form-control" placeholder="Write your notice here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
+                                                    <div className="form-group"> <label for="form_message">Notice *</label> <textarea id="form_message" name="notice" onChange={this.formInputChange} className="form-control" placeholder="Write your notice here." rows="4" required="required" data-error="Please, leave us a message."></textarea> </div>
                                                 </div>
-                                                <div className="col-md-12"> <input type="submit" className="btn btn-success btn-send pt-2 btn-block " value="Send Message"/> </div>
+                                                <div className="col-md-12"> <input type="submit" className="btn btn-success btn-send pt-2 btn-block " onClick={this.submitButton} value="Send Notice"/> </div>
                                             </div>
                                         </div>
                                     </form>
