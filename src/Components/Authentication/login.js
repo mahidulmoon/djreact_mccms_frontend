@@ -18,7 +18,7 @@ class Login extends Component {
             alert("Input valid username and password");
         }else{
             //console.log(this.state.login);
-            axios.post('http://127.0.0.1:8000/api/user/login',this.state.login).then(res => {console.log(res.data);alert("Login Successfull")}).catch(err => alert("Error",err))
+            axios.post('http://127.0.0.1:8000/api/user/login',this.state.login).then(res => {localStorage.setItem('userid',res.id);localStorage.setItem('token',res.token);alert("Login Successfull")}).catch(err => alert("Error",err))
         }
     }
     render() {

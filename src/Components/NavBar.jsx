@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class NavBar extends Component {
+    state = {
+        islogin : false,
+    }
+    componentDidMount(){
+        if (localStorage.getItem('token')){
+            this.setState({islogin:true})
+        }
+    }
+    logout(){
+        localStorage.removeItem("token");
+        localStorage.removeItem("userid")
+    }
     render() {
         return (
             <>
@@ -51,9 +63,12 @@ class NavBar extends Component {
                             <li className="nav-item">
                                 <a className="nav-link" href="/registration">Sign Up</a>
                             </li>
-                            <li className="nav-item">
+                            {!this.state.islogin && <li className="nav-item">
                                 <a className="nav-link" href="/login">Sign In</a>
-                            </li>
+                            </li>}
+                            {this.state.islogin && <li className="nav-item">
+                                <a className="nav-link" href="/login" onClick={this.logout}>Sign Out</a>
+                            </li>}
                             </ul>
                         </div>
                         </nav>
