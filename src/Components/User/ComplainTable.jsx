@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import {FcBullish} from "react-icons/fc";
+import axios from "axios";
 class ComplainTable extends Component {
+    state = {
+        ownComplains:[],
+    }
+    componentWillMount(){
+        axios.get('http://127.0.0.1:8000/api/complain/postcomplain/',{
+            headers:{
+                Authorization: `Token ${localStorage.getItem('token')}`
+            }
+        }).then(res => this.setState({ownComplains:res.data})).catch(err => {console.log(err);alert("could not fetch own complain")});
+    }
     render() {
         return (
             <div className="col-lg-8">
@@ -13,30 +24,23 @@ class ComplainTable extends Component {
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Complain ID</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Post time</th>
+                        <th scope="col">Likes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                        {this.state.ownComplains.map(complain =>
+                            <tr>
+                                <th scope="row">{complain.id}</th>
+                                <td>{complain.complain_subject}</td>
+                                <td style={{ color: 'red'}}>{complain.status}</td>
+                                <td>{complain.created_at}</td>
+                                <td>{complain.avg_rating}</td>
+                            </tr>    
+                        )}
                     </tbody>
                     </table>
             </div>
