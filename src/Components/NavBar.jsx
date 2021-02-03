@@ -9,7 +9,7 @@ class NavBar extends Component {
             this.setState({islogin:true})
         }
     }
-    logout(){
+    logout =()=>{
         localStorage.removeItem("token");
         localStorage.removeItem("userid")
     }
@@ -57,9 +57,9 @@ class NavBar extends Component {
                             <li className="nav-item">
                                 <a className="nav-link" href="/feeds">Complains Feed</a>
                             </li>
-                            <li className="nav-item">
+                            {this.state.islogin && <li className="nav-item">
                                 <a className="nav-link" href="/complainform">Complain Form</a>
-                            </li>
+                            </li>}
                             <li className="nav-item">
                                 <a className="nav-link" href="/registration">Sign Up</a>
                             </li>
