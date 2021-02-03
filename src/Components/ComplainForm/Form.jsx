@@ -69,7 +69,7 @@ class ComplainForm extends Component {
                             <label for="pincode">Area Postal Code </label>
                             <input type="number" required="required" id="pincode" onChange={this.inputChange}  name="complaint_postal_code" autocomplete="off"  placeholder="Enter area postal code"/>
                             <label for="comoplainsubject">Complain Subject </label>
-                            <input type="text" required="required" id="comoplain_subject" onChange={this.inputChange}  name="comoplainsubject" autocomplete="off"  placeholder="Enter your complain subject here "/>
+                            <input type="text" required="required" id="comoplain_subject" onChange={this.inputChange}  name="complain_subject" autocomplete="off"  placeholder="Enter your complain subject here "/>
                             <label for="complain">Your Complain Here </label>
                             <textarea  required="required" id="complain" name="complain" onChange={this.inputChange} autocomplete="off" placeholder="Enter your complain here"> </textarea>
                             <label for="file">Upload File/Image </label>

@@ -36,7 +36,7 @@ class Complains extends Component {
                         <div className="col-lg-6">
                             <div className="tm-activity-block">
                                 <div className="tm-activity-img-container">
-                                    <img src={complain.image_field} height="60" alt="logo" className="tm-activity-img" />
+                                    <img src={complain.image_field} height="60" width="160" alt="logo" className="tm-activity-img" />
                                     <br/>
                                     <p className="text-danger bg-light"> {complain.status}</p>
                                     <p>{complain.created_at.slice(11,19)} <br/>{complain.created_at.slice(0,10)}</p>
