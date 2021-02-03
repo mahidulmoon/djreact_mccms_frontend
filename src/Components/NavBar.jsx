@@ -51,9 +51,9 @@ class NavBar extends Component {
                             <li className="nav-item">
                                 <a className="nav-link" href="/admindashboard">Dashboard</a>
                             </li>
-                            <li className="nav-item">
+                            {this.state.islogin && <li className="nav-item">
                                 <a className="nav-link" href="/userdashboard">Profile</a>
-                            </li>
+                            </li>}
                             <li className="nav-item">
                                 <a className="nav-link" href="/feeds">Complains Feed</a>
                             </li>
