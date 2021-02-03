@@ -6,10 +6,11 @@ class ComplainForm extends Component {
         userinfo:[],
         complain:{
             complainer_name:'',complainer_email:'',complainer_phone_number:'',complaint_address:'',complaint_postal_code:'',complain_subject:'',complain:'',image_field:null
-        }
+        },
+        token:[],
     }
     componentWillMount(){
-        axios.get(`http://127.0.0.1:8000/api/user/registeruser/${localStorage.getItem('userid')}/`).then(res => this.setState({userinfo:res.data,complain:{complainer_name:res.data.user.username,complainer_email:res.data.user.email,complainer_phone_number:res.data.phone}})).catch(err => {console.log(err);alert("error to fetch userinfo")})
+        axios.get(`http://127.0.0.1:8000/api/user/registeruser/${localStorage.getItem('userid')}/`).then(res => this.setState({userinfo:res.data,token:localStorage.getItem('token'),complain:{complainer_name:res.data.user.username,complainer_email:res.data.user.email,complainer_phone_number:res.data.phone}})).catch(err => {console.log(err);alert("error to fetch userinfo")})
     }
 
     inputChange = e =>{
@@ -34,7 +35,11 @@ class ComplainForm extends Component {
             uploadFormData.append('complain',this.state.complain.complain);
             uploadFormData.append('image_field',this.state.complain.image_field,this.state.complain.image_field.name);
         //console.log(uploadFormData);
-            axios.post('http://127.0.0.1:8000/api/complain/postcomplain/',uploadFormData).then(res => alert("Complain uploaded successful",res)).catch(err => {console.log(err);alert("Cannot post the complain")});
+            axios.post('http://127.0.0.1:8000/api/complain/postcomplain/',uploadFormData,{
+                headers: {
+                  Authorization: `Token ${this.state.token}`
+                }
+              }).then(res => alert("Complain uploaded successful",res)).catch(err => {console.log(err);alert("Cannot post the complain")});
         }else{
             alert("You forgot to attach file");
         }

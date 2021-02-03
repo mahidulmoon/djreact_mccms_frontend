@@ -25,6 +25,13 @@ class SingleFeed extends Component {
                         <div>
                             <img className="img-fluid" src={this.props.complain.image_field} alt="image" />
                         </div>
+                        <center>
+                            <video width="500" height="540" controls>
+                                <source src={this.props.complain.image_field} type="video/mp4"/>
+                                <source src={this.props.complain.image_field} type="video/ogg" />
+                                Your browser does not support the video tag.
+                            </video> 
+                        </center>
                         <br/>
                         <button ><code><FcAddDatabase/>({this.props.complain.avg_rating}) Mark as Agree</code></button>
                         </div>
