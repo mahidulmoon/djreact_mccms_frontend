@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 class ComplainForm extends Component {
+    
     render() {
+        if(!localStorage.getItem('token')){
+            return <Redirect path="/login" />
+        }
         return (
             <div>
                 <div class="container">
