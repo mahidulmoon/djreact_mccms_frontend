@@ -10,7 +10,12 @@ class Registration extends Component {
             phone:'',
             address:'',
         },
-        isadmin:'true',
+        isAdmin: false,
+    }
+    componentWillMount(){
+        if(localStorage.getItem('userid')){
+            axios.get(`http://127.0.0.1:8000/api/user/previligeduser/${localStorage.getItem('userid')}/`).then(resp => this.setState({isAdmin:resp.data.is_staff})).catch(err=>this.setState({isAdmin:false}))
+        }
     }
     inputchangeUser = e =>{
         const cred = this.state.register.user;
@@ -39,13 +44,6 @@ class Registration extends Component {
             this.setState(prevState => ({register:{user:{...prevState.register.user,is_superuser:true}}}));
         }
         
-    }
-    componentDidMount(){
-        if(localStorage.getItem('admin')==='true'){
-            this.setState({isadmin:'true'});
-        }else{
-            this.setState({isadmin:'false'});
-        }
     }
     onsubmit = e =>{
         e.preventDefault();
@@ -99,12 +97,12 @@ class Registration extends Component {
                                 </Form.Group>
                             </Form.Row>
 
-                            <Form.Row>
+                            {this.state.isAdmin && <Form.Row>
                                 <Col><Form.Check aria-label="is_staff" onClick={this.checkboxinputAuthority} value={this.state.register.user.is_staff} />
                                 <Form.Label>Authority</Form.Label></Col>
                                 <Col><Form.Check aria-label="is_supseruser" onClick={this.checkboxinputAdmin} value={this.state.register.user.is_supseruser}  />
                                 <Form.Label>Admin</Form.Label></Col>
-                            </Form.Row>
+                            </Form.Row>}
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridEmail">
                                 <Form.Label>Phone</Form.Label>
