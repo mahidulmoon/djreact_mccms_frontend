@@ -4,7 +4,8 @@ class NoticeForm extends Component {
     state ={
         notice:{
             subject:'',department:'',notice:''
-        }
+        },
+        token:[],
     }
 
     formInputChange = (e) =>{
@@ -15,8 +16,15 @@ class NoticeForm extends Component {
     submitButton = e =>{
         e.preventDefault();
         //console.log(this.state.notice)
-        axios.post('http://127.0.0.1:8000/api/notice/notices/',this.state.notice).then(res => {alert("Notice added successfully.");window.location.reload()}).catch(err => {console.log(err);alert("An error occured while posting notice.")});
+        axios.post('http://127.0.0.1:8000/api/notice/notices/',this.state.notice,{
+            headers:{
+                Authorization: `Token ${this.state.token}`
+            }
+        }).then(res => {alert("Notice added successfully.");window.location.reload()}).catch(err => {console.log(err);alert("An error occured while posting notice.")});
 
+    }
+    componentWillMount(){
+        this.setState({token:localStorage.getItem('token')});
     }
 
 

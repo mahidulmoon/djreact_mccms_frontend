@@ -42,8 +42,8 @@ class PreviligedUser extends Component {
                             <th>Name</th>
                             <th>Usename</th>
                             <th>Email</th>
-                            <th>Staff</th>
                             <th>Admin</th>
+                            <th>Super User</th>
                             <th>Actions</th>
                             </tr>
                         </thead>
