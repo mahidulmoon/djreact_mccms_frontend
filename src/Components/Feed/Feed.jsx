@@ -8,6 +8,9 @@ class Feed extends Component {
         next:'',
         previous:'',
         count: 0,
+        rating:{
+            user_id:parseInt(localStorage.getItem('userid')),complain_id:0,rating:1
+        }
     }
     componentWillMount(){
         axios.get('http://127.0.0.1:8000/api/complain/complains/').then(res => {this.setState({complains: res.data.results,next:res.data.next,previous:res.data.previous,count:res.data.count})}).catch(err => {console.log(err);alert("error to fetch complain")});
@@ -19,6 +22,14 @@ class Feed extends Component {
     previouspage = () =>{
         axios.get(this.state.previous).then(res => this.setState({complains:res.data.results,next:res.data.next,previous:res.data.previous}))
     } 
+    LikeButton(id){
+        this.setState({rating:{...this.state.rating,complain_id:id}});
+        if(this.state.rating.user_id == null || this.state.rating.complain_id == 0){
+            alert("Please login first");
+        }else{
+            console.log(this.state.rating);
+        }
+    }
     render() {
         return (
             <div>
@@ -57,7 +68,7 @@ class Feed extends Component {
                                         </video> 
                                     </center>
                                     <br/>
-                                    <button ><code><FcAddDatabase/>({complain.avg_rating}) Mark as Agree</code></button>
+                                    <button onClick={() => this.LikeButton(complain.id)} ><code><FcAddDatabase/>({complain.avg_rating}) Mark as Agree</code></button>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +79,7 @@ class Feed extends Component {
                     )}
                     <nav aria-label="Page navigation example">
                             <ul className="pagination justify-content-end">
-                                <li className="page-item ">
+                                <li className="page-item">
                                 <button className="page-link" tabindex="-1" onClick={this.previouspage}>Previous</button>
                                 </li>
                                 
