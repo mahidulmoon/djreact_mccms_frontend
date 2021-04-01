@@ -8,6 +8,7 @@ class Feed extends Component {
         next:'',
         previous:'',
         count: 0,
+        token: localStorage.getItem('token'),
         rating:{
             user_id:parseInt(localStorage.getItem('userid')),complain_id:0,rating:1
         }
@@ -24,10 +25,16 @@ class Feed extends Component {
     } 
     LikeButton(id){
         this.setState({rating:{...this.state.rating,complain_id:id}});
-        if(this.state.rating.user_id == null || this.state.rating.complain_id == 0){
+        if(this.state.rating.user_id === null || this.state.rating.complain_id === 0){
             alert("Please login first");
+            //console.log(this.state.rating);
         }else{
-            console.log(this.state.rating);
+            //console.log(this.state.rating);
+            axios.post('http://127.0.0.1:8000/api/complain/ratecomplain/',this.state.rating,{
+                headers:{
+                    Authorization: `Token ${this.state.token}`
+                }
+            }).then(res => window.location.reload()).catch(err => console.log('error',err));
         }
     }
     render() {
