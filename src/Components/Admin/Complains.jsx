@@ -7,6 +7,7 @@ class Complains extends Component {
         next:'',
         previous:'',
         count: 0,
+        token: localStorage.getItem('token')
     }
     componentDidMount(){
         axios.get('http://127.0.0.1:8000/api/complain/complains/').then(res => {this.setState({complains: res.data.results,next:res.data.next,previous:res.data.previous,count:res.data.count})}).catch(err => {console.log(err);alert("error to fetch complain")});
@@ -18,6 +19,20 @@ class Complains extends Component {
     previouspage = () =>{
         axios.get(this.state.previous).then(res => this.setState({complains:res.data.results,next:res.data.next,previous:res.data.previous}))
     } 
+    approveButton(id){
+        axios.put(`http://127.0.0.1:8000/api/complain/updatestatus/${id}`,{status:"approved"},{
+            headers:{
+                Authorization: `Token ${this.state.token}`
+            }
+        }).then(res =>{this.componentDidMount(); console.log(res.data)}).catch(err=>console.log('can not approve complain'));
+    }
+    solveButton(id){
+        axios.put(`http://127.0.0.1:8000/api/complain/updatestatus/${id}`,{status:"solved"},{
+            headers:{
+                Authorization: `Token ${this.state.token}`
+            }
+        }).then(res =>{this.componentDidMount(); console.log(res.data)}).catch(err=>console.log('can not solved complain'));
+    }
     render() {
         return (
             <div>
@@ -41,8 +56,8 @@ class Complains extends Component {
                                     <p className="text-danger bg-light"> {complain.status}</p>
                                     <p>{complain.created_at.slice(11,19)} <br/>{complain.created_at.slice(0,10)}</p>
                                     <div className="row">
-                                        <button className="col-lg-6 btn-outline-primary">approve</button>
-                                        <button className="col-lg-6 btn-outline-success">solved</button>
+                                        <button onClick={() => this.approveButton(complain.id)} className="col-lg-6 btn-outline-primary">approve</button>
+                                        <button onClick={() => this.solveButton(complain.id)} className="col-lg-6 btn-outline-success">solved</button>
                                     </div>
                                 
                                 </div>
