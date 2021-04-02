@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import {AiOutlineMessage,AiOutlineSortAscending} from "react-icons/ai";
 import {FaTicketAlt} from "react-icons/fa";
+import axios from "axios";
 class Dashboard extends Component {
+    state={
+        result:[],
+    }
+    componentWillMount(){
+        axios.get('http://127.0.0.1:8000/api/user/admindashshort').then(res => this.setState({result:res.data})).catch(err => console.log("error fetch cards api data"));
+    }
     render() {
         return (
             <div className="col-lg-8">
@@ -15,7 +22,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <AiOutlineMessage />
                         </div>
-                        <div className="mr-5">26 New Messages!</div>
+                        <div className="mr-5">{this.state.result.approve_complains} Approved Complains!</div>
                         </div>
                         
                         
@@ -28,7 +35,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <AiOutlineSortAscending />
                         </div>
-                        <div className="mr-5">11 New Tasks!</div>
+                        <div className="mr-5">{this.state.result.pendin_complains} Pending Complains!</div>
                         </div>
                         
                     </div>
@@ -39,7 +46,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <i className="fa fa-fw fa-shopping-cart"></i>
                         </div>
-                        <div className="mr-5">123 New Orders!</div>
+                        <div className="mr-5">{this.state.result.solved_complains} Solved Complains!</div>
                         </div>
                         
                     </div>
@@ -50,7 +57,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <FaTicketAlt />
                         </div>
-                        <div className="mr-5">13 New Tickets!</div>
+                        <div className="mr-5">{this.state.result.complains} Complains!</div>
                         </div>
                         
                     </div>
@@ -65,7 +72,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <AiOutlineMessage />
                         </div>
-                        <div className="mr-5">26 New Messages!</div>
+                        <div className="mr-5">{this.state.result.notices} Notices!</div>
                         </div>
                         
                         
@@ -78,7 +85,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <AiOutlineSortAscending />
                         </div>
-                        <div className="mr-5">11 New Tasks!</div>
+                        <div className="mr-5">{this.state.result.normal_user} Verified Users!</div>
                         </div>
                         
                     </div>
@@ -89,7 +96,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <i className="fa fa-fw fa-shopping-cart"></i>
                         </div>
-                        <div className="mr-5">123 New Orders!</div>
+                        <div className="mr-5">{this.state.result.prev_user} Preveliged Users!</div>
                         </div>
                         
                     </div>
@@ -100,7 +107,7 @@ class Dashboard extends Component {
                         <div className="card-body-icon">
                             <FaTicketAlt />
                         </div>
-                        <div className="mr-5">13 New Tickets!</div>
+                        <div className="mr-5">{this.state.result.admin_user} Authorized Users!</div>
                         </div>
                         
                     </div>
