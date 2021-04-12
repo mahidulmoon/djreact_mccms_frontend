@@ -58,7 +58,8 @@ class PreviligedUser extends Component {
                                         <td>{user.email}</td>
                                         <td>{user.is_staff && <FcApproval/>}</td>
                                         <td>{user.is_superuser && <FcApproval/>} {!user.is_superuser && <FcBookmark/>}</td>
-                                        <td>$320,800</td>
+                                        <td><button type="button" class="btn btn-primary">View</button><br/>
+                                        <button type="button" class="btn btn-danger">Manage</button></td>
                                    </tr> 
                                    )
                                }}
