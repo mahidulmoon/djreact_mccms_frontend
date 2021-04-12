@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {FcAddDatabase} from "react-icons/fc";
 import axios from "axios";
+import jsPDF from 'jspdf';
 class Complains extends Component {
     state = {
         complains:[],
@@ -33,6 +34,41 @@ class Complains extends Component {
             }
         }).then(res =>{this.componentDidMount(); console.log(res.data)}).catch(err=>console.log('can not solved complain'));
     }
+    dpdf = (complain) => {
+        var doc = new jsPDF(); 
+        var today = new Date();   
+        doc.setTextColor(165, 0, 0);  
+        doc.setFont("bold");
+        doc.text(50, 10, 'Municipal Corporation Complain Management System');  
+        doc.setTextColor(0, 0, 0); 
+        doc.setFont("times");   
+        doc.text(10, 20, 'Complain Details:');   
+        doc.setFont("italic"); 
+        doc.text(20, 30, `Subject: ${complain.complain_subject}`);     
+        doc.text(140, 30, `Address : ${complain.complaint_address}`); 
+        doc.setTextColor(255, 0, 0);
+        doc.text(20, 40, `Status:${complain.status}`);     
+        //doc.text(140, 40, `Time of :${this.state.registeredfir.timeofincedence}`);    
+        doc.setTextColor(0, 0, 0); 
+        doc.text(20, 50, `Complain : ${complain.complain}`); 
+        doc.setTextColor(0,0,0);
+        //doc.text(20, 60, `Address:${complain.complaint_address}`);     
+        //doc.text(20, 90, `Complain Registration Time:${complain.created_at}`);
+        doc.setFont("bold");
+        doc.text(10, 110, `Complain Registration Time:${complain.created_at}`);
+        doc.text(10, 130, 'Complainer Information:');   
+        doc.setFont("italic"); 
+        doc.text(20, 140, `Name: ${complain.complainer_name}`);     
+        //doc.text(130, 140, `Father's Name:${this.state.complainerinfo.fathername}`); 
+        doc.text(20, 160, `Email: ${complain.complainer_email}`);     
+        doc.text(20, 150, `Phone:${complain.complainer_phone}`);    
+        doc.setFont("bold");
+        doc.text(10,170,"Short Report(optional):")
+        doc.text(10,250,`Signature of Investigation Officer: `);
+        doc.setFont("italic"); 
+        doc.text(20,260,`Date:${today}`);
+        doc.save('document.pdf'); // Save the PDF with name "katara"...    
+    }
     render() {
         return (
             <div>
@@ -61,7 +97,7 @@ class Complains extends Component {
                                     </div>
                                 
                                 </div>
-                                <div className="tm-activity-block-text" style={{width: "100"}}>
+                                <div className="tm-activity-block-text" style={{width: 300}}>
                                 <h3 className="tm-text-blue">{complain.complain_subject}</h3>
                                 <p>
                                     {complain.complain}
@@ -71,7 +107,7 @@ class Complains extends Component {
                                     
                                 
                                 </div>
-                                <div style={{float:"right"}}>
+                                <div onClick={() => this.dpdf(complain)} style={{float:"right"}}>
                                     <img src="print.png" alt="nothing" />
                                 </div>
                                 
