@@ -61,7 +61,7 @@ class Complains extends Component {
                                     </div>
                                 
                                 </div>
-                                <div className="tm-activity-block-text">
+                                <div className="tm-activity-block-text" style={{width: "100"}}>
                                 <h3 className="tm-text-blue">{complain.complain_subject}</h3>
                                 <p>
                                     {complain.complain}
@@ -70,6 +70,9 @@ class Complains extends Component {
                                 <code className="col-lg-6"><FcAddDatabase/> ({complain.avg_rating}) Agree</code>
                                     
                                 
+                                </div>
+                                <div style={{float:"right"}}>
+                                    <img src="print.png" alt="nothing" />
                                 </div>
                                 
                             </div>   
