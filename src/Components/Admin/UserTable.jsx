@@ -57,7 +57,7 @@ class UserTable extends Component {
                                         <td>{user.user.email}</td>
                                         <td>{user.phone}</td>
                                         <td>{user.address}</td>
-                                        <td><button type="button" class="btn btn-primary">View</button><br/>
+                                        <td>
                                         <button type="button" class="btn btn-danger">Manage</button></td>
                                    </tr> 
                                    )
