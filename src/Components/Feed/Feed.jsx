@@ -64,16 +64,21 @@ class Feed extends Component {
                                     <br/>
                                     <div className="widget-content text-info"> ** {complain.complain} </div>
                                     <br />
-                                    <div>
+                                    {/* <div>
                                         <img className="img-fluid" src={complain.image_field} alt="image" />
-                                    </div>
-                                    <center>
+                                    </div> */}
+                                    {(complain.image_field.includes(".jpg") || complain.image_field.includes(".jpeg") || complain.image_field.includes(".png") || complain.image_field.includes(".webp")) && <div>
+                                        <img className="img-fluid" src={complain.image_field} alt="image" />
+                                    </div>}
+                                    { !(complain.image_field.includes(".jpg") || complain.image_field.includes(".jpeg") || complain.image_field.includes(".png") || complain.image_field.includes(".webp"))
+                                        && <div><center>
                                         <video width="500" height="540" controls>
                                             <source src={complain.image_field} type="video/mp4"/>
                                             <source src={complain.image_field} type="video/ogg" />
                                             Your browser does not support the video tag.
                                         </video> 
-                                    </center>
+                                    </center></div> 
+                                    }
                                     <br/>
                                     <button onClick={() => this.LikeButton(complain.id)} ><code><FcAddDatabase/>({complain.avg_rating}) Mark as Agree</code></button>
                                     </div>
