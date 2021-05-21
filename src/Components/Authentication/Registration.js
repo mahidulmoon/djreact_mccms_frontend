@@ -47,7 +47,7 @@ class Registration extends Component {
     }
     onsubmit = e =>{
         e.preventDefault();
-        if(this.state.register.phone ==='' || this.state.register.user.email ==='' ){
+        if(this.state.register.phone ==='' || this.state.register.user.email ==='' || this.state.register.user.password.length < 8 ){
             alert("Please check your Inputs");
         }else{
             //console.log(this.state.register);
