@@ -75,7 +75,7 @@ class SingleFeed extends Component {
                                     }
                                     <br/>
                                     {!this.state.button &&<button onClick={() => this.LikeButton(complain.id)} ><code><FcAddDatabase/>({complain.avg_rating}) Mark as Agree</code></button>}
-                                    {this.state.button &&<button onClick={() => this.DisLikeButton(complain.id)} ><code><FcAddDatabase/>({complain.avg_rating}) Agreed</code></button>}
+                                    {this.state.button &&<button onClick={() => this.DisLikeButton(complain.id)} ><code><FcAddDatabase/>({complain.avg_rating+1}) Agreed</code></button>}
 
                                     </div>
                                 </div>
