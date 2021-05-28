@@ -23,18 +23,20 @@ class Feed extends Component {
     previouspage = () =>{
         axios.get(this.state.previous).then(res => this.setState({complains:res.data.results,next:res.data.next,previous:res.data.previous}))
     } 
-    LikeButton(id){
+    LikeButton(id) {
         this.setState({rating:{...this.state.rating,complain_id:id}});
-        if(this.state.rating.user_id === null || this.state.rating.complain_id === 0){
+        if(this.state.rating.user_id == null){
             alert("Please login first");
             //console.log(this.state.rating);
         }else{
-            //console.log(this.state.rating);
-            axios.post('http://127.0.0.1:8000/api/complain/ratecomplain/',this.state.rating,{
-                headers:{
-                    Authorization: `Token ${this.state.token}`
-                }
-            }).then(res => window.location.reload()).catch(err => console.log('error',err));
+            if(this.state.rating.complain_id > 0){
+                // console.log(this.state.rating);
+                axios.post('http://127.0.0.1:8000/api/complain/ratecomplain/',this.state.rating,{
+                    headers:{
+                        Authorization: `Token ${this.state.token}`
+                    }
+                }).then(res => window.location.reload()).catch(err => console.log('error',err));
+            }
         }
     }
     render() {
