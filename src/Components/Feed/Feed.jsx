@@ -56,7 +56,7 @@ class Feed extends Component {
                                         <br/>
                                         <div className="row">
                                             <h6 className="col-lg-8"><button>Complained By:</button> {complain.complainer_name}</h6>
-                                            <h6 className="col-lg-4 text-danger"><button>Status: </button> {complain.status}</h6>
+                                            <h6 className={complain.status == 'approved' ? "col-lg-4 text-success" : "col-lg-4 text-danger"}><button>Status: </button> {complain.status}</h6>
                                         </div>
                                         <div className="row">
                                             <h6 className="col-lg-8"><button>Place:</button> {complain.complaint_address}</h6>
