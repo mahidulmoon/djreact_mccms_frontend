@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form,Col,Button,Container } from 'react-bootstrap';
+import { Form,Col,Button,Container,Modal } from 'react-bootstrap';
 import axios from 'axios';
 class Registration extends Component {
     state = {
@@ -11,6 +11,9 @@ class Registration extends Component {
             address:'',
         },
         isAdmin: false,
+        otp_verify: false,
+        otp: '',
+        new_otp: 0
     }
     componentWillMount(){
         if(localStorage.getItem('userid')){
@@ -51,7 +54,27 @@ class Registration extends Component {
             alert("Please check your Inputs");
         }else{
             //console.log(this.state.register);
-            axios.post('http://127.0.0.1:8000/api/user/registeruser/',this.state.register).then(resp => {console.log(resp.data);alert("Registration successful")}).catch(err=>{console.log(err);alert("Registration successful")});
+            this.setState({otp_verify:true});
+            axios.post('http://127.0.0.1:8000/api/user/otp',this.state.register).then(res => 
+                {
+                    //console.log(res.data);
+                    this.setState({otp_verify:true,otp:res.data.otp});
+                }
+            ).catch(err => alert("Failed to register this number"))
+        }
+    }
+    otpSubmit = () => {
+        
+        if(parseInt(this.state.otp) == parseInt(this.state.new_otp)){
+            //console.log("otp match")
+            axios.post('http://127.0.0.1:8000/api/user/registeruser/',this.state.register).then(resp => {
+                //console.log(resp.data);
+                this.setState({otp_verify:false})
+                alert("Registration successful");
+                window.location.reload(true)}).catch(err=>{console.log(err);alert("Registration successful")});
+
+        }else{
+            alert("You have send wrong otp")
         }
     }
 
@@ -62,6 +85,30 @@ class Registration extends Component {
                 <br/>
                 <br/>
                 <br/>
+                <Modal show={this.state.otp_verify} onHide={() => this.setState({otp_verify:false})}>
+                    <Modal.Dialog>
+                            <Modal.Header closeButton>
+                                <Modal.Title>OTP Verification</Modal.Title>
+                            </Modal.Header>
+
+                            <Modal.Body>
+                                <p>An One Time Password has been sent to Your Number Please Submit it.</p>
+                                <Form>
+                                    <Form.Row>
+                                        <Form.Group as={Col} controlId="formGridPassword">
+                                            
+                                            <Form.Control type="password" placeholder="OTP" name="otp" value={this.state.register.new_otp} onChange={e => this.setState({new_otp: e.target.value})} />
+                                        </Form.Group>
+                                    </Form.Row>
+                                </Form>
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={() => this.setState({otp_verify:false})}>Close</Button>
+                                {this.state.new_otp > 0 && <Button variant="primary" onClick={this.otpSubmit}>Save changes</Button>}
+                            </Modal.Footer>
+                    </Modal.Dialog>
+                </Modal>
                 <Form>
                     <Form.Row>
                         <Form.Group >
