@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class NavBar extends Component {
     state = {
         islogin : false,
+        isAdmin: "",
     }
     componentDidMount(){
         if (localStorage.getItem('token')){
             this.setState({islogin:true})
+        }
+        if(localStorage.getItem('userid')){
+            axios.get(`http://127.0.0.1:8000/api/user/previligeduser/${localStorage.getItem('userid')}/`).then(resp => this.setState({isAdmin:resp.data.is_staff})).catch(err=>this.setState({isAdmin:"false"}))
         }
     }
     logout =()=>{
@@ -48,7 +52,7 @@ class NavBar extends Component {
                                 >Home <span className="sr-only">(current)</span></a
                                 >
                             </li>
-                            {this.state.islogin && <li className="nav-item">
+                            {this.state.islogin && this.state.isAdmin == true && <li className="nav-item">
                                 <a className="nav-link" href="/admindashboard">Dashboard</a>
                             </li>}
                             {this.state.islogin && <li className="nav-item">
