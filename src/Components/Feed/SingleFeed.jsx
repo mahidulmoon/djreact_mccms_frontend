@@ -10,6 +10,9 @@ class SingleFeed extends Component {
         button: false,
         id: 0
     }
+    componentDidMount(){
+        console.log("token",this.state.token);
+    }
     DisLikeButton(id){
         //this.setState({button:false});
         axios.delete(`http://127.0.0.1:8000/api/complain/ratecomplain/${this.state.id}`,{
@@ -20,7 +23,7 @@ class SingleFeed extends Component {
     }
     LikeButton(id) {
         this.setState({rating:{...this.state.rating,complain_id:id}});
-        if(this.state.rating.user_id == null){
+        if(this.state.token === null){
             alert("Please login first");
             //console.log(this.state.rating);
         }else{

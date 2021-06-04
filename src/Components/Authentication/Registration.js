@@ -71,7 +71,7 @@ class Registration extends Component {
                 //console.log(resp.data);
                 this.setState({otp_verify:false})
                 alert("Registration successful");
-                window.location.reload(true)}).catch(err=>{console.log(err);alert("Registration successful")});
+                window.location.reload()}).catch(err=>{console.log(err);alert("Registration successful")});
 
         }else{
             alert("You have send wrong otp")
