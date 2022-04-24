@@ -2,14 +2,14 @@ version: '3.7'
 
 services:
 
-  IPDC_FRONTEND:
-    container_name: IPDC_FRONTEND
-    build: ./IPDC_FRONTEND
+  cpps_ipdc_frontend:
+    container_name: cpps_ipdc_frontend
+    build: ./
     volumes:
       - './:/app'
       - '/app/node_modules'
     ports:
-      - 9004:3366
+      - 3000:3366
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
